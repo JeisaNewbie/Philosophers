@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/27 14:13:59 by jhwang2           #+#    #+#             */
+/*   Updated: 2023/04/27 15:08:29 by jhwang2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 int	main(int argc, char *argv[])
 {
 	t_data	philos;
 
-	if (check_vaild (argc, argv)) //manda ㅎㅏㅁ수로 수수정  필필요요
+	if (check_vaild (argc, argv))
 		return (1);
 	init_philos (&philos, argv);
 	if (fork_proc(&philos))
@@ -31,7 +43,7 @@ int	check_vaild(int argc, char **argv)
 		{
 			if (!('0' <= argv[i[0]][i[1]] && argv[i[0]][i[1]] <= '9'))
 			{
-				printf ("option is not integer!!!\n");
+				printf ("option is not an integer!!!\n");
 				return (1);
 			}
 		}

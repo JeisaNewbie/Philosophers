@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork1.c                                            :+:      :+:    :+:   */
+/*   take_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahkiler <ahkiler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:43 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/25 15:58:25 by ahkiler          ###   ########.fr       */
+/*   Updated: 2023/04/27 14:09:17 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ int	take_fork(t_data *philos, t_philo *philo, int id, int left_id)
 	if (print_status (philos, philo, id, -1))
 	{
 		philos->forks[id] = -1;
-		put_forks (philos, id, left_id);
 		return (1);
 	}
 	if (id == left_id)
 	{
 		philos->flag = id;
-		put_forks (philos, id, left_id);
 		return (1);
 	}
 	philos->forks[left_id] = id;
@@ -42,6 +40,12 @@ void	take_forks(t_data *philos, t_philo *philo, int id, int left_id)
 	if (id % denom == 0 || id % denom == 2)
 	{
 		pthread_mutex_lock (&philos->mutex->fork_mutex[id]);
+		if (id == left_id)
+		{
+			philos->forks[id] = id;
+			pthread_mutex_unlock (&philos->mutex->fork_mutex[id]);
+			return ;
+		}
 		pthread_mutex_lock (&philos->mutex->fork_mutex[left_id]);
 	}
 	else

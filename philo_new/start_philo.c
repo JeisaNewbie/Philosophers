@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_philo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahkiler <ahkiler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:38:08 by ahkiler           #+#    #+#             */
-/*   Updated: 2023/04/25 15:43:01 by ahkiler          ###   ########.fr       */
+/*   Updated: 2023/04/27 16:58:57 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	start_philo(t_data *philos)
 	int	i;
 
 	i = 0;
-	while (i < (philos->num_of_philos % 2) + 2)
+	while (i < (philos->num_of_philos & 1) + 2)
 	{
 		create_pth (philos, i++);
 		usleep (100);

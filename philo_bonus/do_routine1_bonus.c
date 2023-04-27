@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   do_routine1_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/27 14:14:22 by jhwang2           #+#    #+#             */
+/*   Updated: 2023/04/27 14:17:51 by jhwang2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 void	do_routine(t_data *philos)
@@ -15,7 +27,7 @@ void	do_routine(t_data *philos)
 
 int	eating(t_data *philos)
 {
-	print_status (philos, philos->id, 2);
+	print_status (philos, philos->philo, philos->id, 2);
 	p_usleep (philos, -2);
 	philos->philo->time_to_die = 0;
 	philos->philo->eaten++;
@@ -37,13 +49,13 @@ int	eating_all(t_data *philos)
 
 int	sleeping(t_data *philos)
 {
-	print_status (philos, philos->id, 3);
+	print_status (philos, philos->philo, philos->id, 3);
 	p_usleep (philos, -3);
 	return (0);
 }
 
 int	thinking(t_data *philos)
 {
-	print_status (philos, philos->id, 4);
+	print_status (philos, philos->philo, philos->id, 4);
 	return (0);
 }

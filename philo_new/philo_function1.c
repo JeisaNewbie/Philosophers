@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_function1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahkiler <ahkiler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:52 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/25 16:15:53 by ahkiler          ###   ########.fr       */
+/*   Updated: 2023/04/27 17:09:17 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ int	print_status(t_data *philos, t_philo *philo, int id, int flag)
 	}
 	pthread_mutex_unlock (&philos->mutex->setting_mutex);
 	if (flag == -1)
-		printf ("%llums\t%d\thas taken a fork\t%d\n", time, id, philo->eaten);
+		printf ("%llu %d has taken a fork\n", time, id);
 	else if (flag == -2)
-		printf ("%llums\t%d\tis eating\t\t%d\n", time, id, philo->eaten);
+		printf ("%llu %d is eating\n", time, id);
 	else if (flag == -3)
-		printf ("%llums\t%d\tis sleeping\t\t%d\n", time, id, philo->eaten);
+		printf ("%llu %d is sleeping\n", time, id);
 	else if (flag == -4)
-		printf ("%llums\t%d\tis thinking\t\t%d\n", time, id, philo->eaten);
+		printf ("%llu %d is thinking\n", time, id);
 	else
-		printf ("%llums\t%d\tis died\n", time, flag);
+		printf ("%llu %d is died\n", time, flag);
 	pthread_mutex_unlock (&philos->mutex->print_mutex);
 	return (0);
 }

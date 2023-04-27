@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fork_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/27 14:14:07 by jhwang2           #+#    #+#             */
+/*   Updated: 2023/04/27 14:17:24 by jhwang2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 int	fork_proc(t_data *philos)
@@ -52,13 +64,6 @@ int	start(t_data *philos)
 
 	philos->philo = &philo;
 	init_philo (philos, philos->philo, philos->argv);
-	// philos->philo->wait = sem_open ("wait", O_CREAT, 0664, 1);
-	// if (philos->philo->wait == SEM_FAILED)
-	// {
-	// 	printf ("fail\n");
-	// 	return (0);
-	// }
-	// sem_unlink ("wait");
 	do_routine (philos);
 	return (0);
 }

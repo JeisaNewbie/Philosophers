@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahkiler <ahkiler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:34 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/25 15:52:47 by ahkiler          ###   ########.fr       */
+/*   Updated: 2023/04/27 17:18:11 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
+//시간 엉키는거
+//밥 다먹어도 행동
+//데이터 레이스
+//end_flag 수시체크
 int	main(int argc, char *argv[])
 {
 	t_data		philos;

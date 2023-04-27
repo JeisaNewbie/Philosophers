@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/27 14:13:55 by jhwang2           #+#    #+#             */
+/*   Updated: 2023/04/27 14:58:14 by jhwang2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
@@ -75,10 +87,11 @@ int			start_philo(t_data *philos, int i);
 
 //---------------------------philo_function 1 & 2.c
 
-void		print_status(t_data *philos, int id, int flag);
+void		print_status(t_data *philos, t_philo *philo, int id, int flag);
 void		p_usleep(t_data *philos, int flag);
 void		close_sem(t_data *philos);
 u_int64_t	get_gtd(void);
+void		is_died(t_data *philos, t_philo *philo);
 void		*p_calloc(size_t count, size_t size);
 void		p_bzero(void *dest, size_t size);
 int			p_atoi(const char *str);
