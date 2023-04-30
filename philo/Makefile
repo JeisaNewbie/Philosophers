@@ -5,42 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/29 17:19:40 by jhwang2           #+#    #+#              #
-#    Updated: 2023/04/29 17:23:05 by jhwang2          ###   ########.fr        #
+#    Created: 2023/04/29 17:16:37 by jhwang2           #+#    #+#              #
+#    Updated: 2023/04/29 20:17:22 by jhwang2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PHILO_BONUS	=	philo_bonus
-NAME		=	$(PHILO_BONUS)
+PHILO		=	philo
+NAME		=	$(PHILO)
 CC			=	cc
 RM			=	rm -rf
 LIBC		=	ar rcs
 CFLAGS		=	-Wall -Wextra -Werror
-BONUS_SRCS	=	main_bonus.c \
-				init_bonus.c \
-				fork_bonus.c \
-				do_routine1_bonus.c \
-				do_routine2_bonus.c \
-				philo_function1_bonus.c \
-				philo_function2_bonus.c \
-				philo_function3_bonus.c \
-				wait_and_kill_bonus.c
-BONUS_OBJS	=	${BONUS_SRCS:.c=.o}
+SRCS		=	main.c \
+				init.c \
+				malloc.c \
+				start_philo.c \
+				do_routine1.c \
+				do_routine2.c \
+				take_fork.c \
+				philo_function1.c \
+				philo_function2.c
+OBJS		=	${SRCS:.c=.o}
 
 all :
 	@$(MAKE) -j6 $(NAME)
 
-$(NAME) : $(BONUS_OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS)
+$(NAME) : $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	@$(RM) $(BONUS_OBJS)
+	@$(RM) $(OBJS)
 
 fclean : clean
-	@$(RM) $(PHILO_BONUS)
+	@$(RM) $(NAME)
 
 re :
 	@$(MAKE) fclean

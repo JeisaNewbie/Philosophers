@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:06:08 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/27 15:06:09 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/04/30 01:32:25 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	init_base(t_data *philos, char **argv)
 
 void	init_philo(t_data *philos, t_philo *philo, char **argv)
 {
+	philo->eaten = 0;
 	philo->time_to_die = 0;
 	philo->time_to_die_origin = (u_int64_t)p_atoi (argv[2]);
 	philo->time_to_eat = (u_int64_t)p_atoi (argv[3]);
@@ -57,7 +58,6 @@ void	init_philo(t_data *philos, t_philo *philo, char **argv)
 	else
 		philo->num_of_time_to_eat = -1;
 	philo->usec_before = philos->time_to_start;
-	philo->eaten = 0;
 }
 
 void	init_time(t_data *philos)

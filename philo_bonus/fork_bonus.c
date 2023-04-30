@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 14:14:07 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/27 14:17:24 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/04/30 02:27:29 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	fork_child(t_data *philos)
 	int		i;
 
 	i = 0;
-	init_time (philos);
-	while (i < (philos->num_of_philos % 2) + 2)
+	while (i < (philos->num_of_philos & 1) + 2)
 	{
 		if (start_philo (philos, i++))
 			return (1);
@@ -42,6 +41,8 @@ int	fork_child(t_data *philos)
 
 int	start_philo(t_data *philos, int i)
 {
+	if (i == 0)
+		init_time (philos);
 	while (i < philos->num_of_philos)
 	{
 		philos->pid = fork ();
@@ -53,7 +54,7 @@ int	start_philo(t_data *philos, int i)
 			return (0);
 		}
 		philos->philos[i] = philos->pid;
-		i += (philos->num_of_philos % 2) + 2;
+		i += (philos->num_of_philos & 1) + 2;
 	}
 	return (0);
 }
