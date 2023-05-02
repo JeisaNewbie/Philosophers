@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:34 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/29 20:27:14 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 09:34:51 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@ int	main(int argc, char *argv[])
 		return (1);
 	start_philo (philos, &data);
 	monitoring_pthread (&data);
+	free_all (philos, &data);
 	return (0);
+}
+
+void	free_all(t_philo **philos, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->num_of_philos)
+		free (philos[i++]);
+	free (philos);
 }
 
 void	start_philo(t_philo **philos, t_data *data)

@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:23:03 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/29 20:07:25 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 10:01:12 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
-# include <string.h>
 
 typedef struct s_mutex
 {
@@ -55,18 +54,14 @@ typedef struct s_philo
 	int				left_id;
 }	t_philo;
 
-//---------------------------main.c
 void		start_philo(t_philo **philos, t_data *data);
 void		monitoring_pthread(t_data *data);
 void		wait_pth(t_data *data, int *error);
-//---------------------------init.c
-
+void		free_all(t_philo **philos, t_data *data);
 t_philo		**init_philos(t_data *data, char **argv);
 void		init_base(t_data *data, char **argv);
 void		init_philo(t_philo *philos, t_data *data, int id);
 void		init_time(t_data *data);
-
-//---------------------------do_routine.c
 void		do_routine(t_philo *philo, t_data *data, int id, int left_id);
 int			thinking(t_data *data, t_philo *philo, int id);
 int			sleeping(t_data *data, t_philo *philo, int id);
@@ -74,25 +69,18 @@ int			eating(t_data *data, t_philo *philo, int id, int left_id);
 int			eating_all(t_data *data);
 int			p_usleep(t_data *data, t_philo *philo, int id, u_int64_t time);
 u_int64_t	get_gtd(void);
-
-//---------------------------start_philo.c
 void		create_pth(t_philo **philos, t_data *data, int i);
 void		*start_pth(void *arg);
 int			end_pth(t_data *data);
 void		add_philo_ended(t_philo *philo);
-//---------------------------fork.c
-
 int			take_fork(t_data *data, t_philo *philo, int id, int left_id);
 void		take_forks(t_data *data, int id, int left_id);
 void		put_forks(t_data *data, int id, int left_id);
-
-//---------------------------malloc.c
 t_philo		**malloc_all(t_data *data);
 int			malloc_mutex(t_data *data);
 int			malloc_forks(t_data *data);
 int			malloc_fork_mutex(t_data *data);
 t_philo		**malloc_philo(t_data *data);
-//---------------------------philo_function 1 & 2.c
 int			check_vaild(int argc, char **argv);
 int			check_argument(char **argv);
 void		print_status(t_data *data, t_philo *philo, int id, char *str);

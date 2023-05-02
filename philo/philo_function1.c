@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:52 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/29 19:42:21 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 09:58:40 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_vaild(int argc, char **argv)
 	i[1] = -1;
 	if (!(5 <= argc && argc <= 6))
 	{
-		printf ("not enough option!!!\n");
+		printf ("option failure!!!\n");
 		return (1);
 	}
 	while (argv[++i[0]])
@@ -29,7 +29,7 @@ int	check_vaild(int argc, char **argv)
 		{
 			if (!('0' <= argv[i[0]][i[1]] && argv[i[0]][i[1]] <= '9'))
 			{
-				printf ("option is not an integer!!!\n");
+				printf ("integer failure!!!\n");
 				return (1);
 			}
 		}
@@ -52,7 +52,7 @@ int	check_argument(char **argv)
 	else
 		return (0);
 	if (error == 1)
-		printf ("not valid argument!!!\n");
+		printf ("argument failure!!!\n");
 	else
 		printf ("all philosophers have eaten all\n");
 	return (1);

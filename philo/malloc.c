@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:23:05 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/29 20:08:24 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 09:27:04 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ t_philo	**malloc_all(t_data *data)
 		return (0);
 	philos = malloc_philo (data);
 	if (philos == NULL)
-	{
-		free (data->forks);
 		return (0);
-	}
 	return (philos);
 }
 
