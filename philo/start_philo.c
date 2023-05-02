@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 20:16:49 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/29 21:57:45 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 12:20:50 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@ void	create_pth(t_philo **philos, t_data *data, int i)
 {
 	pthread_t	philo;
 
+	if (i == 0)
+		init_time (data);
 	while (i < data->num_of_philos)
 	{
 		pthread_create (&philo, 0, start_pth, (void *)philos[i]);
 		pthread_detach (philo);
-		if (i == 0)
-		{
-			pthread_mutex_lock (&data->mutex->setting_mutex);
-			init_time (data);
-			pthread_mutex_unlock (&data->mutex->setting_mutex);
-		}
 		i += (data->num_of_philos & 1) + 2;
 	}
 }

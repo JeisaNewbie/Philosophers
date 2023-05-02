@@ -6,7 +6,7 @@
 #    By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/29 17:16:37 by jhwang2           #+#    #+#              #
-#    Updated: 2023/04/29 20:17:22 by jhwang2          ###   ########.fr        #
+#    Updated: 2023/05/02 13:10:47 by jhwang2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	$(PHILO)
 CC			=	cc
 RM			=	rm -rf
 LIBC		=	ar rcs
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=thread
 SRCS		=	main.c \
 				init.c \
 				malloc.c \

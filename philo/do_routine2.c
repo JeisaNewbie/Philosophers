@@ -6,20 +6,19 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:24:51 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/02 09:42:46 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 13:12:43 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	eating_all(t_data *data)
+void	eating_all(t_data *data)
 {
 	pthread_mutex_lock (&data->mutex->setting_mutex);
 	data->num_of_philos_eaten++;
 	if (data->num_of_philos_eaten == data->num_of_philos * 2)
 		data->end = 1;
 	pthread_mutex_unlock (&data->mutex->setting_mutex);
-	return (0);
 }
 
 int	p_usleep(t_data *data, t_philo *philo, int id, u_int64_t time)
@@ -36,7 +35,8 @@ int	p_usleep(t_data *data, t_philo *philo, int id, u_int64_t time)
 			<= philo->time_to_die)
 		{
 			pthread_mutex_lock (&data->mutex->setting_mutex);
-			data->end = id + 1;
+			if (data->end == 0)
+				data->end = id + 1;
 			pthread_mutex_unlock (&data->mutex->setting_mutex);
 			return (1);
 		}

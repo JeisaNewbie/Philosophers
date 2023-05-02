@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:23:03 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/02 10:01:12 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 13:13:03 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void		do_routine(t_philo *philo, t_data *data, int id, int left_id);
 int			thinking(t_data *data, t_philo *philo, int id);
 int			sleeping(t_data *data, t_philo *philo, int id);
 int			eating(t_data *data, t_philo *philo, int id, int left_id);
-int			eating_all(t_data *data);
+void		eating_all(t_data *data);
 int			p_usleep(t_data *data, t_philo *philo, int id, u_int64_t time);
 u_int64_t	get_gtd(void);
 void		create_pth(t_philo **philos, t_data *data, int i);
@@ -75,7 +75,7 @@ int			end_pth(t_data *data);
 void		add_philo_ended(t_philo *philo);
 int			take_fork(t_data *data, t_philo *philo, int id, int left_id);
 void		take_forks(t_data *data, int id, int left_id);
-void		put_forks(t_data *data, int id, int left_id);
+int			put_forks(t_data *data, int id, int left_id);
 t_philo		**malloc_all(t_data *data);
 int			malloc_mutex(t_data *data);
 int			malloc_forks(t_data *data);

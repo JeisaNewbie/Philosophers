@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:48 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/04/29 19:55:50 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/02 13:13:48 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,16 @@ void	do_routine(t_philo *philo, t_data *data, int id, int left_id)
 int	eating(t_data *data, t_philo *philo, int id, int left_id)
 {
 	print_status (data, philo, id, "is eating");
+	if (philo->num_of_time_to_eat != -1)
+		if (++philo->eaten == philo->num_of_time_to_eat)
+			eating_all (data);
+	philo->time_to_die = 0;
 	if (p_usleep (data, philo, id, philo->time_to_eat))
 	{
 		put_forks (data, id, left_id);
 		return (1);
 	}
 	put_forks (data, id, left_id);
-	philo->time_to_die = 0;
-	philo->eaten++;
-	if (philo->num_of_time_to_eat != -1)
-	{
-		if (philo->eaten >= philo->num_of_time_to_eat)
-			return (eating_all (data));
-	}
 	return (0);
 }
 
