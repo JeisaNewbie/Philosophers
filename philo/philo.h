@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:23:03 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/02 13:13:03 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/03 13:18:18 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ void		do_routine(t_philo *philo, t_data *data, int id, int left_id);
 int			thinking(t_data *data, t_philo *philo, int id);
 int			sleeping(t_data *data, t_philo *philo, int id);
 int			eating(t_data *data, t_philo *philo, int id, int left_id);
-void		eating_all(t_data *data);
+int			eating_all(t_data *data, int id);
 int			p_usleep(t_data *data, t_philo *philo, int id, u_int64_t time);
 u_int64_t	get_gtd(void);
 void		create_pth(t_philo **philos, t_data *data, int i);
+void		create_pth_odd(t_philo **philos, t_data *data, int i);
 void		*start_pth(void *arg);
 int			end_pth(t_data *data);
 void		add_philo_ended(t_philo *philo);
@@ -83,6 +84,7 @@ int			malloc_fork_mutex(t_data *data);
 t_philo		**malloc_philo(t_data *data);
 int			check_vaild(int argc, char **argv);
 int			check_argument(char **argv);
+void		print_takef(t_data *data, t_philo *philo, int id, char *str);
 void		print_status(t_data *data, t_philo *philo, int id, char *str);
 void		rm_mutex_all(t_data *data, int end);
 void		*p_calloc(size_t count, size_t size);
@@ -90,5 +92,9 @@ void		p_bzero(void *dest, size_t size);
 int			p_atoi(const char *str);
 size_t		p_strlen(const char *str);
 size_t		p_strlcat(char *dst, const char *src, size_t dstsize);
-
+void		do_routine_odd(t_philo *philo, t_data *data, int id, int left_id);
+int			eating_odd(t_data *data, t_philo *philo, int id, int left_id);
+int			take_fork_odd(t_data *data, t_philo *philo, int id, int left_id);
+void		take_forks_odd(t_data *data, int id, int left_id);
+int			put_forks_odd(t_data *data, int id, int left_id);
 #endif

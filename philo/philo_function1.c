@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:52 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/02 13:06:13 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/03 11:33:18 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ int	check_argument(char **argv)
 	else
 		printf ("all philosophers have eaten all\n");
 	return (1);
+}
+
+void	print_takef(t_data *data, t_philo *philo, int id, char *str)
+{
+	pthread_mutex_lock (&data->mutex->print_mutex);
+	printf ("%llu %d %s\n", get_gtd () - data->time_to_start, id + 1, str);
+	printf ("%llu %d %s\n", get_gtd () - data->time_to_start, id + 1, str);
+	pthread_mutex_unlock (&data->mutex->print_mutex);
+	philo->usec_before = get_gtd ();
 }
 
 void	print_status(t_data *data, t_philo *philo, int id, char *str)

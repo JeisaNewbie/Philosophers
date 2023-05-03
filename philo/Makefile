@@ -6,7 +6,7 @@
 #    By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/29 17:16:37 by jhwang2           #+#    #+#              #
-#    Updated: 2023/05/02 13:10:47 by jhwang2          ###   ########.fr        #
+#    Updated: 2023/05/03 14:20:58 by jhwang2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,16 @@ NAME		=	$(PHILO)
 CC			=	cc
 RM			=	rm -rf
 LIBC		=	ar rcs
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=thread
+CFLAGS		=	-Wall -Wextra -Werror
 SRCS		=	main.c \
 				init.c \
 				malloc.c \
 				start_philo.c \
-				do_routine1.c \
-				do_routine2.c \
+				do_routine.c \
+				do_routine_odd.c \
+				do_routine_utiles.c \
 				take_fork.c \
+				take_fork_odd.c \
 				philo_function1.c \
 				philo_function2.c
 OBJS		=	${SRCS:.c=.o}

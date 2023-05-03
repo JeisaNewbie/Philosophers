@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:34 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/02 13:01:10 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/03 14:15:11 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,22 @@ void	start_philo(t_philo **philos, t_data *data)
 	int			i;
 
 	i = 0;
-	while (i < (data->num_of_philos & 1) + 2)
+	if (data->num_of_philos % 2)
 	{
-		create_pth (philos, data, i++);
-		usleep (100);
+		while (i < 2 && data->num_of_philos != 1)
+		{
+			create_pth_odd (philos, data, i++);
+			usleep (100);
+		}
+		create_pth_odd (philos, data, data->num_of_philos - 1);
+	}
+	else
+	{
+		while (i < 2)
+		{
+			create_pth (philos, data, i++);
+			usleep (100);
+		}
 	}
 }
 
@@ -80,7 +92,11 @@ void	wait_pth(t_data *data, int *error)
 	pthread_mutex_unlock (&data->mutex->end_mutex);
 	pthread_mutex_lock (&data->mutex->setting_mutex);
 	if (data->num_of_philos_eaten == data->num_of_philos * 2)
-			*error = 0;
+	{
+		printf ("%llu %d %s\n",
+			get_gtd () - data->time_to_start, data->end, "is eating");
+		*error = 0;
+	}
 	else
 		*error = data->end;
 	pthread_mutex_unlock (&data->mutex->setting_mutex);
