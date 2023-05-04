@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:24:51 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/03 13:20:06 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/04 18:06:10 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ int	sleeping(t_data *data, t_philo *philo, int id)
 		return (1);
 	print_status (data, philo, id, "is sleeping");
 	return (p_usleep (data, philo, id, philo->time_to_sleep));
-}
-
-int	thinking(t_data *data, t_philo *philo, int id)
-{
-	if (!end_pth (data))
-		return (1);
-	print_status (data, philo, id, "is thinking");
-	return (0);
 }
 
 int	p_usleep(t_data *data, t_philo *philo, int id, u_int64_t time)

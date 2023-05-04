@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:23:03 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/03 13:18:18 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/04 18:06:46 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ int			eating_odd(t_data *data, t_philo *philo, int id, int left_id);
 int			take_fork_odd(t_data *data, t_philo *philo, int id, int left_id);
 void		take_forks_odd(t_data *data, int id, int left_id);
 int			put_forks_odd(t_data *data, int id, int left_id);
+int			thinking_odd(t_data *data, t_philo *philo, int id);
 #endif

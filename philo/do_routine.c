@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:48 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/03 13:11:58 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/04 18:06:05 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,16 @@ int	eating(t_data *data, t_philo *philo, int id, int left_id)
 		return (1);
 	}
 	put_forks (data, id, left_id);
+	return (0);
+}
+
+int	thinking(t_data *data, t_philo *philo, int id)
+{
+	if (!end_pth (data))
+		return (1);
+	print_status (data, philo, id, "is thinking");
+	if (philo->time_to_eat > philo->time_to_sleep)
+		return (p_usleep (data, philo, id,
+				philo->time_to_eat - philo->time_to_sleep));
 	return (0);
 }
