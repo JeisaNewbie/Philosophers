@@ -6,7 +6,7 @@
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:01:48 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/05/04 18:13:59 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/05/05 11:00:18 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	do_routine_odd(t_philo *philo, t_data *data, int id, int left_id)
 		p_usleep (data, philo, id, philo->time_to_die_origin * 2);
 		return ;
 	}
+	if (id == data->num_of_philos - 1)
+		p_usleep (data, philo, id, philo->time_to_eat * 2);
 	while (1)
 	{
 		if (take_fork_odd(data, philo, id, left_id))
@@ -29,7 +31,7 @@ void	do_routine_odd(t_philo *philo, t_data *data, int id, int left_id)
 			return ;
 		if (sleeping (data, philo, id))
 			return ;
-		if (thinking (data, philo, id))
+		if (thinking_odd (data, philo, id))
 			return ;
 	}
 }
@@ -65,6 +67,8 @@ int	thinking_odd(t_data *data, t_philo *philo, int id)
 	if (!end_pth (data))
 		return (1);
 	print_status (data, philo, id, "is thinking");
-	return (p_usleep (data, philo, id,
-			philo->time_to_eat - philo->time_to_sleep + philo->time_to_eat));
+	if (philo->time_to_eat * 2 - philo->time_to_sleep >= 0)
+		return (p_usleep (data, philo, id,
+				philo->time_to_eat * 2 - philo->time_to_sleep));
+	return (0);
 }
